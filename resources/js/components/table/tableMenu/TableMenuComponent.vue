@@ -215,7 +215,7 @@ export default {
                     status: statusEnum.ACTIVE
                 },
                 property: {
-                    design: itemDesignEnum.LIST,
+                    design: itemDesignEnum.GRID,
                     type: null
                 }
             },
