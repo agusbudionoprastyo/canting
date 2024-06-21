@@ -31,7 +31,7 @@ module.exports = {
               "heading": "#1F1F39",
               "paragraph": "#6E7191",
               "placeholder": "#A0A3BD",
-              "primary": "rgb(23 114 255 / <alpha-value>)",
+              "primary": "rgb(255 43 133 / <alpha-value>)",
               "primary-light": "rgb(220 234 255 / <alpha-value>)",
           },
           boxShadow: {
