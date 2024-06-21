@@ -33,8 +33,9 @@ export default {
 
     info: function (message = "Info", position = "top-left") {
         const toast = useToast();
-        toast.info(message, {
+        toast(message, {
             position: position,
+            style: { backgroundColor: 'rgba(255, 43, 133, 0.5)' }, // Menggunakan nilai RGBA untuk warna latar belakang dengan transparansi
         });
     },
 
