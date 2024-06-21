@@ -21,6 +21,7 @@ export default {
         const toast = useToast();
         toast(message, {
             position: position,
+            style: { backgroundColor: 'green', color: 'white' }, // Menambahkan style untuk warna
         });
     },
 
