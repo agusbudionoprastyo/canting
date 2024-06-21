@@ -21,8 +21,8 @@ export default {
 
     success: function (message = "Success", position = "top-right") {
         const toast = useToast();
-        toast.default(message, {
-            position: position,
+        toast.success(message, {
+            position: position,// Menggunakan kelas CSS yang telah ditentukan
         });
     },
 
