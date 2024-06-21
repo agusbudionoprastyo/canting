@@ -10,7 +10,7 @@ import { useToast } from "vue-toastification";
  * bottom-left
  * */
 export default {
-    default: function (message = "Default", position = "top-right") {
+    default: function (message = "Default", position = "top-left") {
         const toast = useToast();
         toast(message, {
             position: position,
@@ -69,7 +69,7 @@ export default {
         });
     },
 
-    successInfo: function (status = null, message = "", position = "top-left") {
+    successInfo: function (status = null, message = "", position = "top-right") {
         const toast = useToast();
         toast.info(message, {
             position: position,
