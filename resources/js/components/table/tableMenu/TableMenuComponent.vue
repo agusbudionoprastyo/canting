@@ -32,7 +32,7 @@
                     <img :src="setting.image_vag" alt="category" class="h-6">
                     <span class="capitalize text-sm font-medium text-heading">{{ $t('label.frontend_non_veg') }}</span>
                     <i
-                        class="lab-close-circle-line text-xl text-red-500 transition opacity-0 -ml-8 clear-item-type-filter font-fill-danger lab-font-size-24"></i>
+                        class="lab-close-circle-line text-xl text-red-500 transition opacity-0 -ml-8 clear-item-type-filter font-fill-primary lab-font-size-24"></i>
                 </button>
                 <button
                     :disabled="itemProps.property.type !== null && itemProps.property.type === enums.itemTypeEnum.NON_VEG"
@@ -42,7 +42,7 @@
                     <img :src="setting.image_non_vag" alt="category" class="h-6">
                     <span class="capitalize text-sm font-medium text-heading">{{ $t('label.veg') }}</span>
                     <i
-                        class="lab-close-circle-line text-xl text-red-500 transition opacity-0 -ml-8 font-fill-danger lab-font-size-24"></i>
+                        class="lab-close-circle-line text-xl text-red-500 transition opacity-0 -ml-8 font-fill-primary lab-font-size-24"></i>
                 </button>
             </div>
 
