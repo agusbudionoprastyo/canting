@@ -32,7 +32,7 @@ module.exports = {
               "paragraph": "#6E7191",
               "placeholder": "#A0A3BD",
               "primary": "rgb(255 43 133 / <alpha-value>)",
-              "primary-light": "rgb(255 203 203 / <alpha-value>)",
+              "primary-light": "rgb(167 230 255 / <alpha-value>)",
           },
           boxShadow: {
               "sidebar": "15px 0px 25px 0px rgba(0, 0, 0, 0.08)",
