@@ -19,7 +19,7 @@ export default {
 
     success: function (message = "Success", position = "top-right") {
         const toast = useToast();
-        toast.primary(message, {
+        toast(message, {
             position: position,
         });
     },
