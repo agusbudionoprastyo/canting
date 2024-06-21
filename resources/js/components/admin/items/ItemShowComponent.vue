@@ -121,7 +121,7 @@
                             <span class="hidden sm:inline-block">{{ $t("button.save") }}</span>
                         </button>
                         <button v-if="resetButton" @click="resetPreviewImage" type="button"
-                            class="db-btn-outline h-[38px] shadow-[0px_6px_10px_rgba(251,_78,_78,_0.24)] !text-[#FB4E4E] !bg-white !border-[#FB4E4E]">
+                            class="db-btn-outline h-[38px] shadow-[0px_6px_10px_rgba(251,_78,_78,_0.24)] !text-[#FF2B85] !bg-white !border-[#FF2B85]">
                             <i class="lab lab-reset"></i>
                             <span class="hidden sm:inline-block">{{ $t("button.reset") }}</span>
                         </button>

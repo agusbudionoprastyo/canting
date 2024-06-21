@@ -108,7 +108,7 @@
                                     <span class="text-[#2AC769]" v-if="transaction.sign == '+'">
                                         {{ transaction.sign }} {{ transaction.amount }}
                                     </span>
-                                    <span class="text-[#FB4E4E]" v-else>
+                                    <span class="text-[#FF2B85]" v-else>
                                         {{ transaction.sign }} {{ transaction.amount }}
                                     </span>
                                 </td>

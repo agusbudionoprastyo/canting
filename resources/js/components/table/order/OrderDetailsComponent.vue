@@ -58,7 +58,7 @@
                             </li>
                             <li class="flex items-center gap-2">
                                 <span class="capitalize text-sm leading-6">{{ $t("label.status") }}:</span>
-                                <span class="capitalize text-sm leading-6" :class="enums.paymentStatusEnum.PAID === order.payment_status ? 'text-green-600' : 'text-[#FB4E4E]'">
+                                <span class="capitalize text-sm leading-6" :class="enums.paymentStatusEnum.PAID === order.payment_status ? 'text-green-600' : 'text-[#FF2B85]'">
                                     {{ enums.paymentStatusEnumArray[order.payment_status] }}
                                 </span>
                             </li>

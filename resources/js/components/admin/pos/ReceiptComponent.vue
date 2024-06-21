@@ -3,7 +3,7 @@
         <div class="modal-dialog max-w-[340px] rounded-none" id="print">
             <div class="modal-header hidden-print">
                 <button type="button" @click="reset"
-                    class="modal-close flex items-center justify-center gap-1.5 py-2 px-4 rounded bg-[#FB4E4E]">
+                    class="modal-close flex items-center justify-center gap-1.5 py-2 px-4 rounded bg-[#FF2B85]">
                     <i class="lab lab-back-bold lab-font-size-16 text-white"></i>
                     <span class="text-xs leading-5 capitalize text-white">{{ $t('button.close') }}</span>
                 </button>

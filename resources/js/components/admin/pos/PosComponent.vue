@@ -185,7 +185,7 @@
             </ul>
             <div class="flex items-center justify-center gap-6" v-if="carts.length > 0">
                 <button @click.prevent="resetCart"
-                    class="capitalize text-sm font-medium leading-6 font-rubik w-full text-center rounded-3xl py-2 text-white bg-[#FB4E4E]">
+                    class="capitalize text-sm font-medium leading-6 font-rubik w-full text-center rounded-3xl py-2 text-white bg-[#FF2B85]">
                     {{ $t('button.cancel') }}
                 </button>
                 <button @click.prevent="orderSubmit"

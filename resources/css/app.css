@@ -400,7 +400,7 @@
     .modal-btns { @apply flex flex-wrap justify-end gap-3 mt-3 }
     .modal-btn-fill { @apply inline-flex items-center gap-1.5 capitalize !text-sm py-1.5 px-3 rounded-md border border-primary text-white bg-primary }
     .modal-btn-outline { @apply inline-flex items-center gap-1.5 capitalize !text-sm py-1.5 px-3 rounded-md border border-gray-200 !text-gray-600 bg-white }
-    .modal-close { @apply leading-none text-xl text-[#FB4E4E]  }
+    .modal-close { @apply leading-none text-xl text-[#FF2B85]  }
 
 
     /* PAGINATION */

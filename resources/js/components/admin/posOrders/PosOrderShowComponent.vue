@@ -13,7 +13,7 @@
                         </p>
                         <div class="flex items-center gap-2 mt-1.5">
                             <span
-                                :class="'text-xs capitalize h-5 leading-5 px-2 rounded-3xl text-[#FB4E4E] bg-[#FFDADA]' + statusClass(order.payment_status)">
+                                :class="'text-xs capitalize h-5 leading-5 px-2 rounded-3xl text-[#FF2B85] bg-[#FFDADA]' + statusClass(order.payment_status)">
                                 {{ enums.paymentStatusEnumArray[order.payment_status] }}
                             </span>
                             <span :class="'text-xs capitalize px-2 rounded-3xl ' + orderStatusClass(order.status)">

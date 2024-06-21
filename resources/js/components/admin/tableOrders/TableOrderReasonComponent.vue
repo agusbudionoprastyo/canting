@@ -1,7 +1,7 @@
 <template>
     <LoadingComponent :props="loading" />
     <button type="button" @click="reasonModal" data-modal="#reasonModal"
-        class="flex items-center justify-center text-white gap-2 px-4 h-[38px] rounded shadow-db-card bg-[#FB4E4E]">
+        class="flex items-center justify-center text-white gap-2 px-4 h-[38px] rounded shadow-db-card bg-[#FF2B85]">
         <i class="lab lab-close"></i>
         <span class="text-sm capitalize text-white">{{ $t("button.reject") }}</span>
     </button>
