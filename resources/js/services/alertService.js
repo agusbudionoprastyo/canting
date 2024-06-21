@@ -23,7 +23,7 @@ export default {
     //         position: position,
     //     });
     // },
-    success: function (message = "Success", position = "top-left") {
+    success: function (message = "Success", position = "top-right") {
         const toast = useToast();
         toast(message, {
             position: position,
@@ -31,7 +31,7 @@ export default {
         });
     },
 
-    info: function (message = "Info", position = "top-right") {
+    info: function (message = "Info", position = "top-left") {
         const toast = useToast();
         toast.info(message, {
             position: position,
