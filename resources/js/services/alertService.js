@@ -1,4 +1,5 @@
 import { useToast } from "vue-toastification";
+
 /*
  * Position
  * --------------
@@ -9,6 +10,7 @@ import { useToast } from "vue-toastification";
  * bottom-center
  * bottom-left
  * */
+
 export default {
     default: function (message = "Default", position = "top-right") {
         const toast = useToast();
@@ -19,9 +21,8 @@ export default {
 
     success: function (message = "Success", position = "top-right") {
         const toast = useToast();
-        toast(message, {
+        toast.default(message, {
             position: position,
-            style: { backgroundColor: 'green', color: 'white' }, // Menambahkan style untuk warna
         });
     },
 
