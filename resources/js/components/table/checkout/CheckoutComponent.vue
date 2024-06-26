@@ -275,6 +275,32 @@ export default {
             });
             this.checkoutProps.form.items = JSON.stringify(this.checkoutProps.form.items);
 
+//             this.$store.dispatch('tableDiningOrder/save', this.checkoutProps.form).then(orderResponse => {
+//                 this.checkoutProps.form.subtotal = 0;
+//                 this.checkoutProps.form.discount = 0;
+//                 this.checkoutProps.form.delivery_charge = 0;
+//                 this.checkoutProps.form.delivery_time = null;
+//                 this.checkoutProps.form.total = 0;
+//                 this.checkoutProps.form.items = [];
+
+//                 this.$store.dispatch('tableCart/resetCart').then(res => {
+//                     this.loading.isActive = false;
+//                     this.$store.dispatch('tableCart/paymentMethod', this.paymentMethod).then().catch();
+//                     router.push({name: "table.menu.table", params: {slug : this.table.slug}, query: {id: orderResponse.data.data.id}});
+//                 }).catch();
+//             }).catch((err) => {
+//                 this.loading.isActive = false;
+//                 if (typeof err.response.data.errors === 'object') {
+//                     _.forEach(err.response.data.errors, (error) => {
+//                         alertService.error(error[0]);
+//                     });
+//                 }
+//             })
+//         }
+//     }
+
+// }
+
             this.$store.dispatch('tableDiningOrder/save', this.checkoutProps.form).then(orderResponse => {
                 this.checkoutProps.form.subtotal = 0;
                 this.checkoutProps.form.discount = 0;
@@ -282,11 +308,13 @@ export default {
                 this.checkoutProps.form.delivery_time = null;
                 this.checkoutProps.form.total = 0;
                 this.checkoutProps.form.items = [];
-
+                // Panggil testEndpoint setelah orderSubmit berhasil
+                this.testEndpoint();
                 this.$store.dispatch('tableCart/resetCart').then(res => {
                     this.loading.isActive = false;
                     this.$store.dispatch('tableCart/paymentMethod', this.paymentMethod).then().catch();
                     router.push({name: "table.menu.table", params: {slug : this.table.slug}, query: {id: orderResponse.data.data.id}});
+                    
                 }).catch();
             }).catch((err) => {
                 this.loading.isActive = false;
@@ -296,8 +324,55 @@ export default {
                     });
                 }
             })
+        },
+        async testEndpoint() {
+            const url = 'https://wagateway.dafamsemarang.my.id/send-group-message';
+            const payload = {
+                message: `*Hai Canting, ada pesanan baru nih!*\n_Klik tautan berikut untuk mengkonfirmasi pesanan_ cantingfood.my.id 
+                \n*Room/Table*\n${this.table.name}
+                \n*Order Items*\n${this.carts.map(cart => {
+                    let variations = Object.values(cart.item_variations.names).join(' ');
+                    let extras = cart.item_extras.names.join(' ');
+                    let note = cart.instruction;
+                    let items = [];
+                    if (variations.trim() !== '') {
+                        items.push(`*_Varian_* ${variations},`);
+                    }
+                    if (extras.trim() !== '') {
+                        items.push(`*_Extra_* ${extras},`);
+                    }
+                    if (note.trim() !== '') {
+                        items.push(`*_Note_* ${note}`);
+                    }
+                    return `${cart.quantity} ${cart.name} ${items.join(' ')}`
+                }).join('\n')}
+                \n*Subtotal*\n${this.currencyFormat(this.subtotal, this.setting.site_digit_after_decimal_point, this.setting.site_default_currency_symbol, this.setting.site_currency_position)}
+                \n*Tax & Serivce*\n${this.currencyFormat(this.subtotal * 0.21, this.setting.site_digit_after_decimal_point, this.setting.site_default_currency_symbol, this.setting.site_currency_position)}
+                \n*Total*\n${this.currencyFormat(this.subtotal * 1.21, this.setting.site_digit_after_decimal_point, this.setting.site_default_currency_symbol, this.setting.site_currency_position)}
+                \n_Thank's, happy working_`,
+                id_group: '120363304142052316@g.us'
+            };
+
+            try {
+                console.log('Mengirim permintaan ke:', url);
+                console.log('Payload:', payload);
+
+                const response = await axios.post(url, new URLSearchParams(payload), {
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }   
+                });
+
+                console.log('Test endpoint berhasil:', response.data);
+            } catch (error) {
+                console.error('Error menguji endpoint:', error);
+                if (error.response) {
+                    console.error('Response data:', error.response.data);
+                    console.error('Response status:', error.response.status);
+                    console.error('Response headers:', error.response.headers);
+                }
+            }
         }
     }
-
 }
 </script>
