@@ -332,15 +332,15 @@ export default {
                 message: `*Hai Canting, ada pesanan baru nih!*\n_Klik tautan berikut untuk mengkonfirmasi pesanan_ cantingfood.my.id 
                 \n*Room/Table*\n${this.table.name}
                 \n*Order Items*\n${this.carts.map(cart => {
-                    let variations = Object.values(cart.item_variations.names).join(' ');
+                    let variations = Object.values(cart.item_variations.names).join(',');
                     let extras = cart.item_extras.names.join(' ');
                     let note = cart.instruction;
                     let items = [];
                     if (variations.trim() !== '') {
-                        items.push(`*_Varian_* ${variations},`);
+                        items.push(`*_Varian_* ${variations}`);
                     }
                     if (extras.trim() !== '') {
-                        items.push(`*_Extra_* ${extras},`);
+                        items.push(`*_Extra_* ${extras}`);
                     }
                     if (note.trim() !== '') {
                         items.push(`*_Note_* ${note}`);
