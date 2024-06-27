@@ -11,12 +11,9 @@
                 <!-- <button class="webcart flex lg:hidden items-center justify-center gap-1.5 w-fit rounded-3xl capitalize text-sm font-medium h-8 px-3 transition text-white bg-heading"> -->
                     <!-- <i class="fa-solid fa-bag-shopping text-sm"></i> -->
                 <button class="webcart flex lg:hidden items-center justify-center gap-1.5 w-fit capitalize text-sm font-medium h-8 px-3 transition text-primary rounded-3xl shadow-md bg-white">
-                    <!-- <span class="whitespace-nowrap">
+                    <span class="whitespace-nowrap">
                         {{ currencyFormat(subtotal, setting.site_digit_after_decimal_point,
                         setting.site_default_currency_symbol, setting.site_currency_position) }}
-                    </span> -->
-                    <span class="whitespace-nowrap">
-                        {{ $store.getters['tableCart/cartItems'].length }}
                     </span>
                     <i class="fa-solid fa-bag-shopping text-lg text-primary"></i>
                 </button>
