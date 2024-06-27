@@ -10,7 +10,7 @@
 
                 <!-- <button class="webcart flex lg:hidden items-center justify-center gap-1.5 w-fit rounded-3xl capitalize text-sm font-medium h-8 px-3 transition text-white bg-heading"> -->
                     <!-- <i class="fa-solid fa-bag-shopping text-sm"></i> -->
-                <button class="webcart flex lg:hidden items-center justify-center gap-1.5 w-fit capitalize text-sm font-medium h-8 px-3 transition text-primary">
+                <button class="webcart flex lg:hidden items-center justify-center gap-1.5 w-fit capitalize text-sm font-small h-8 px-3 transition text-primary">
                     <i class="fa-solid fa-bag-shopping text-lg text-primary"></i>
                     <span class="whitespace-nowrap">
                         {{ currencyFormat(subtotal, setting.site_digit_after_decimal_point,
@@ -37,7 +37,8 @@
                         <img :src="language.image" alt="flag" class="w-4 h-4 rounded-full">
                         <span class="whitespace-nowrap">{{ language.name }}</span>
                     </button>
-                    <ul v-if="languages.length > 0" class="p-2 min-w-[180px] rounded-lg shadow-xl absolute top-14 ltr:right-0 rtl:left-0 z-10 border border-gray-200 bg-white hidden dropdown-list">
+                    <!-- <ul v-if="languages.length > 0" class="p-2 min-w-[180px] rounded-lg shadow-xl absolute top-14 ltr:right-0 rtl:left-0 z-10 border border-gray-200 bg-white hidden dropdown-list"> -->
+                    <ul v-if="languages.length > 0" class="p-2 min-w-[180px] rounded-lg shadow-xl absolute top-14 ltr:right-0 rtl:left-0 z-10 border border-gray-200 bg-white block dropdown-list">
                         <li @click="changeLanguage(language.id, language.code)" v-for="language in languages"
                             class="flex items-center gap-2 py-1.5 px-2.5 rounded-md cursor-pointer hover:bg-gray-100">
                             <img :src="language.image" alt="flag" class="w-4 h-4 rounded-full">
