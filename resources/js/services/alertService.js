@@ -70,4 +70,12 @@ export default {
             position: position,
         });
     },
+
+    cartAlert: function (message = "Success", position = "top-right", icon = '<i class="lab lab-bag-2 font-fill-primary"></i>') {
+        const toast = useToast();
+        toast(message, {
+            position: position,
+            icon: icon,
+        });
+    },
 };

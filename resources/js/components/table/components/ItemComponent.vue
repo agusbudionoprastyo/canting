@@ -709,7 +709,7 @@ export default {
                     this.addons = {};
                     this.itemArrays = [];
 
-                    alertService.success(this.$t('message.add_to_cart'), { icon: '<i class="lab lab-bag-2 font-fill-primary"></i>' });
+                    alertService.cartAlert(this.$t('message.add_to_cart'));
                     appService.modalHide('#item-variation-modal');
                 }).catch();
             }
