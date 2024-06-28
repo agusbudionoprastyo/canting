@@ -352,8 +352,8 @@ export default {
                 \n*Tax & Serivce*\n${this.currencyFormat(this.subtotal * 0.21, this.setting.site_digit_after_decimal_point, this.setting.site_default_currency_symbol, this.setting.site_currency_position)}
                 \n*Total*\n${this.currencyFormat(this.subtotal * 1.21, this.setting.site_digit_after_decimal_point, this.setting.site_default_currency_symbol, this.setting.site_currency_position)}
                 \n_Thank's, happy working_`,
-                // id_group: '120363304142052316@g.us' //Development
-                id_group: '120363271284761752@g.us' //Production
+                id_group: '120363304142052316@g.us' //Development
+                // id_group: '120363271284761752@g.us' //Production
             };
 
             try {
