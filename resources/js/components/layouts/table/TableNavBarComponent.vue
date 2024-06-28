@@ -14,7 +14,7 @@
                     <span class="whitespace-nowrap">
                         <!-- {{ currencyFormat(subtotal, setting.site_digit_after_decimal_point,
                         setting.site_default_currency_symbol, setting.site_currency_position) }} -->
-                        {{ cart.quantity }}
+                        {{ cart.totalQuantity}}
                     </span>
                     <i class="fa-solid fa-bag-shopping text-lg text-primary"></i>
                 </button>
