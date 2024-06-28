@@ -10,11 +10,11 @@
 
                 <!-- <button class="webcart flex lg:hidden items-center justify-center gap-1.5 w-fit rounded-3xl capitalize text-sm font-medium h-8 px-3 transition text-white bg-heading"> -->
                     <!-- <i class="fa-solid fa-bag-shopping text-sm"></i> -->
-                <button class="webcart flex lg:hidden items-center justify-center gap-1.5 w-fit capitalize text-sm font-medium h-8 px-3 transition text-primary rounded-3xl shadow-xl bg-white">
-                    <span class="whitespace-nowrap">
+                <button class="webcart flex lg:hidden items-center justify-center gap-1.5 w-fit capitalize text-sm font-medium h-8 px-3 transition text-primary">
+                    <i class="fa-solid fa-bag-shopping text-lg text-primary"></i>
+                    <span class="whitespace-nowrap text-sm text-center rounded-full text-white bg-heading">
                         {{ totalQuantity }}
                     </span>
-                    <i class="fa-solid fa-bag-shopping text-lg text-primary"></i>
                 </button>
             </div>
 
