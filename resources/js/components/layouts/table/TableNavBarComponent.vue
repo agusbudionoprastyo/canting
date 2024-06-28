@@ -12,7 +12,7 @@
                     <!-- <i class="fa-solid fa-bag-shopping text-sm"></i> -->
                 <button class="webcart flex lg:hidden items-center justify-center gap-1.5 w-fit capitalize text-sm font-medium h-8 px-3 transition text-primary">
                     <i class="fa-solid fa-bag-shopping text-xl text-primary"></i>
-                    <span class="absolute right-3 text-xs w-[15px] h-[15px] leading-[15px] text-center rounded-full text-heading" style="background-color: #f9eaea;">
+                    <span class="absolute right-3 text-xs w-[15px] h-[15px] leading-[15px] text-center rounded-full" style="background-color: #f9eaea;">
                         {{ totalQuantity }}
                     </span>
                 </button>
