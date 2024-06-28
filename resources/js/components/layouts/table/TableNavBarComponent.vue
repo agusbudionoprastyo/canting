@@ -8,14 +8,11 @@
                     <img class="w-40" :src="setting.theme_logo" alt="logo">
                 </router-link>
 
-                <!-- <button class="webcart flex lg:hidden items-center justify-center gap-1.5 w-fit rounded-3xl capitalize text-sm font-medium h-8 px-3 transition text-white bg-heading"> -->
-                    <!-- <i class="fa-solid fa-bag-shopping text-sm"></i> -->
-                <button @click="handleButtonClick" class="webcart flex lg:hidden items-center justify-center gap-1.5 w-fit capitalize text-sm font-medium h-8 px-3 transition text-white rounded-3xl shadow-xl bg-primary">
+                <button @click="handleButtonClick" :class="{ 'text-white bg-primary': isClicked }" class="webcart flex lg:hidden items-center justify-center gap-1.5 w-fit capitalize text-sm font-medium h-8 px-3 transition bg-white rounded-3xl shadow-xl">
                     <span class="whitespace-nowrap">
-                        {{ currencyFormat(subtotal, setting.site_digit_after_decimal_point,
-                        setting.site_default_currency_symbol, setting.site_currency_position) }}
+                        {{ currencyFormat(subtotal, setting.site_digit_after_decimal_point, setting.site_default_currency_symbol, setting.site_currency_position) }}
                     </span>
-                    <i class="fa-solid fa-bag-shopping text-lg text-primary"></i>
+                    <i class="fa-solid fa-bag-shopping text-lg" :class="{ 'text-white': isClicked }"></i>
                 </button>
             </div>
 
@@ -81,7 +78,8 @@ export default {
                 order_column: "id",
                 order_type: "asc",
                 status: statusEnum.ACTIVE
-            }
+            },
+            isClicked: false
         }
     },
     computed: {
@@ -128,6 +126,9 @@ export default {
         });
     },
     methods: {
+        handleButtonClick() {
+            this.isClicked = !this.isClicked; // Toggle nilai properti isClicked
+        },
         changeLanguage: function (id, code) {
             this.defaultLanguage = id;
             this.$store.dispatch("globalState/set", {language_id: id, language_code: code}).then(res => {
