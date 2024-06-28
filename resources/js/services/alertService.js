@@ -19,10 +19,11 @@ export default {
         });
     },
 
-    success: function (message = "Success", position = "top-right") {
+    success: function (message = "Success", position = "top-right", icon = '<i class="lab lab-bag-2 font-fill-primary"></i>') {
         const toast = useToast();
         toast.success(message, {
-            position: position,// Menggunakan kelas CSS yang telah ditentukan
+            position: position,
+            icon: icon,
         });
     },
 
