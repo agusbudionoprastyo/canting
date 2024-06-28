@@ -709,7 +709,7 @@ export default {
                     this.addons = {};
                     this.itemArrays = [];
 
-                    alertService.cartAlert(this.$t('message.add_to_cart'));
+                    alertService.success(this.$t('message.add_to_cart'));
                     appService.modalHide('#item-variation-modal');
                 }).catch();
             }
