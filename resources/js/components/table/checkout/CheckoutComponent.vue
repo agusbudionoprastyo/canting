@@ -4,7 +4,7 @@
         <div class="container max-w-[965px]">
             <router-link :to="{ name: 'table.menu.table', params : {slug : this.$route.params.slug}}"
                          class="text-xs font-medium inline-flex mb-3 items-center gap-2 text-primary">
-                <i class="lab lab-undo lab-font-size-16"></i>
+                <i class="lab lab-back-bold lab-font-size-16"></i>
                 <span>{{ $t('label.back_to_home') }}</span>
             </router-link>
 
