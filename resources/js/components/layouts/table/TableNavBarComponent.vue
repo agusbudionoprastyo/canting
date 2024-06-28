@@ -8,11 +8,11 @@
                     <img class="w-40" :src="setting.theme_logo" alt="logo">
                 </router-link>
 
-                <button @click="handleButtonClick" :class="{ 'text-white bg-primary': isClicked }" class="webcart flex lg:hidden items-center justify-center gap-1.5 w-fit capitalize text-sm font-medium h-8 px-3 transition rounded-3xl shadow-xl">
+                <button @click="handleButtonClick" :class="{ 'text-white bg-primary': isClicked }" class="webcart flex lg:hidden items-center justify-center gap-1.5 w-fit capitalize text-sm font-medium h-8 px-3 transition rounded-3xl shadow-xl text-priamry">
                     <span class="whitespace-nowrap">
                         {{ currencyFormat(subtotal, setting.site_digit_after_decimal_point, setting.site_default_currency_symbol, setting.site_currency_position) }}
                     </span>
-                    <i class="fa-solid fa-bag-shopping text-lg" :class="{ 'text-white': isClicked }"></i>
+                    <i class="fa-solid fa-bag-shopping text-lg text-priamry" :class="{ 'text-white': isClicked }"></i>
                 </button>
             </div>
 
@@ -127,7 +127,9 @@ export default {
     },
     methods: {
         handleButtonClick() {
-            this.isClicked = !this.isClicked; // Toggle nilai properti isClicked
+            window.setTimeout(() => {
+                this.isClicked = !this.isClicked; // Toggle nilai properti isClicked
+            }, 500);
         },
         changeLanguage: function (id, code) {
             this.defaultLanguage = id;
