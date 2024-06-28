@@ -12,7 +12,7 @@
                     <!-- <i class="fa-solid fa-bag-shopping text-sm"></i> -->
                 <button class="webcart flex lg:hidden items-center justify-center gap-1.5 w-fit capitalize text-sm font-medium h-8 px-3 transition text-primary">
                     <i class="fa-solid fa-bag-shopping text-xl text-primary"></i>
-                    <span v-if="totalQuantity > 0" class="absolute right-3 text-xs w-[15px] h-[15px] leading-[15px] text-center rounded-full text-[#6E7191]" style="background-color: #f9eaea;">
+                    <span v-if="totalQuantity > 0" class="absolute right-3 text-xs w-[15px] h-[15px] leading-[15px] text-center rounded-full text-heading" style="background-color: #f9eaea;">
                         {{ totalQuantity }}
                     </span>
                 </button>
@@ -149,6 +149,12 @@ export default {
         },
         searchReset: function () {
             this.searchItem = "";
+        },
+        closeSidebar: function () {
+            const cart = document.getElementById('cart');
+            const body = document.querySelector('body');
+            cart?.classList?.remove('active');
+            body.style.overflowY = "auto";
         },
     }
 }
