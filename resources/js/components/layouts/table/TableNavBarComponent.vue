@@ -80,7 +80,8 @@ export default {
                 order_column: "id",
                 order_type: "asc",
                 status: statusEnum.ACTIVE
-            }
+            },
+            cartOpen: false // Add this variable to control cart visibility
         }
     },
     computed: {
@@ -150,11 +151,9 @@ export default {
         searchReset: function () {
             this.searchItem = "";
         },
-        closeSidebar: function () {
-            const cart = document.getElementById('cart');
-            const body = document.querySelector('body');
-            cart?.classList?.remove('active');
-            body.style.overflowY = "auto";
+        toggleCart: function () {
+            this.cartOpen = !this.cartOpen;
+            this.$store.dispatch('tableCart/initTable', this.$route.params.slug);
         },
     }
 }
