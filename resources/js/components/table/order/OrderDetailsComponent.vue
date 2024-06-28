@@ -33,7 +33,7 @@
                                 </div>
                                 <div class="flex gap-4" v-if="parseInt(order.status) !== parseInt(enums.orderStatusEnum.REJECTED) && parseInt(order.status) !== parseInt(enums.orderStatusEnum.CANCELED)">
                                     <!-- <a :href="'https://wa.me/' + orderBranch.phone" class="w-8 h-8 rounded-full flex items-center justify-center bg-primary-light"><i class="lab lab-whatsapp font-fill-primary lab-font-size-16"></i></a> -->
-                                    <a :href="'https://wa.me/' + orderBranch.phone + '?text=Hai%20canting%20saya%20dari%20room%20' + order.table_name" class="w-8 h-8 rounded-full flex items-center justify-center bg-primary-light"><i class="lab lab-whatsapp font-fill-whatsapp lab-font-size-16"></i></a>
+                                    <a :href="'https://wa.me/' + orderBranch.phone + '?text=Hai%20canting%20saya%20dari%20' + order.table_name" class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: #35b521;"><i class="lab lab-whatsapp lab-font-size-16" style="color:white"></i></a>
                                 </div>
                             </div>
                         </div>
