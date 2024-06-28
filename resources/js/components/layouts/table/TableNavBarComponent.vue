@@ -12,9 +12,7 @@
                     <!-- <i class="fa-solid fa-bag-shopping text-sm"></i> -->
                 <button class="webcart flex lg:hidden items-center justify-center gap-1.5 w-fit capitalize text-sm font-medium h-8 px-3 transition text-primary rounded-3xl shadow-xl bg-white">
                     <span class="whitespace-nowrap">
-                        <!-- {{ currencyFormat(subtotal, setting.site_digit_after_decimal_point,
-                        setting.site_default_currency_symbol, setting.site_currency_position) }} -->
-                        {{ cart.totalQuantity}}
+                        {{ totalQuantity }}
                     </span>
                     <i class="fa-solid fa-bag-shopping text-lg text-primary"></i>
                 </button>
@@ -97,6 +95,9 @@ export default {
         },
         subtotal: function () {
             return this.$store.getters['tableCart/subtotal'];
+        },
+        totalQuantity: function () {
+            return this.$store.getters['tableCart/totalQuantity'];
         }
     },
     mounted() {

@@ -21,6 +21,13 @@ export const tableCart = {
         },
         paymentMethod: function (state) {
             return state.paymentMethod;
+        },
+        totalQuantity: function (state) {
+            let totalQty = 0;
+            state.lists.forEach(item => {
+                totalQty += item.quantity;
+            });
+            return totalQty;
         }
     },
     actions: {
