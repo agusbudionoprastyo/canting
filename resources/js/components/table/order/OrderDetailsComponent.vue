@@ -33,7 +33,7 @@
                                 </div>
                                 <div class="flex gap-4" v-if="parseInt(order.status) !== parseInt(enums.orderStatusEnum.REJECTED) && parseInt(order.status) !== parseInt(enums.orderStatusEnum.CANCELED)">
                                     <!-- <a :href="'https://wa.me/' + orderBranch.phone" class="w-8 h-8 rounded-full flex items-center justify-center bg-primary-light"><i class="lab lab-whatsapp font-fill-primary lab-font-size-16"></i></a> -->
-                                    <a :href="'https://wa.me/' + orderBranch.phone + '?text=Hai%20canting%20saya%20dari%20room%20' + order.table_name" class="w-8 h-8 rounded-full flex items-center justify-center bg-primary-light"><i class="lab lab-whatsapp font-fill-primary lab-font-size-16"></i></a>
+                                    <a :href="'https://wa.me/' + orderBranch.phone + '?text=Hai%20canting%20saya%20dari%20room%20' + order.table_name" class="w-8 h-8 rounded-full flex items-center justify-center bg-primary-light"><i class="lab lab-whatsapp font-fill-whatsapp lab-font-size-16"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -73,7 +73,7 @@
                             <div class="mb-3 pb-3 border-b last:mb-0 last:pb-0 last:border-b-0 border-gray-2"
                                  v-if="orderItems.length > 0" v-for="item in orderItems" :key="item">
                                 <div class="flex items-center gap-3 relative">
-                                    <h3 class="absolute top-5 -left-3 text-sm w-[26px] h-[26px] leading-[26px] text-center rounded-full text-white bg-heading">
+                                    <h3 class="absolute top-5 -left-3 text-sm w-[26px] h-[26px] leading-[26px] text-center rounded-full text-heading bg-primary">
                                         {{ item.quantity }}
                                     </h3>
                                     <img class="w-16 h-16 rounded-lg flex-shrink-0" :src="item.item_image" alt="thumbnail">
