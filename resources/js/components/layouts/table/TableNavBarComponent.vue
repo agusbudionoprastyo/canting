@@ -8,7 +8,7 @@
                     <img class="w-40" :src="setting.theme_logo" alt="logo">
                 </router-link>
 
-                <button @click="handleButtonClick" :class="{ 'webcart flex lg:hidden items-center justify-center gap-1.5 w-fit capitalize text-sm font-medium h-8 px-3 transition text-white bg-primary rounded-3xl shadow-xl': isClicked }" class="webcart flex lg:hidden items-center justify-center gap-1.5 w-fit capitalize text-sm font-medium h-8 px-3 transition bg-white rounded-3xl shadow-xl">
+                <button @click="handleButtonClick" :class="{ 'text-white bg-primary': isClicked }" class="webcart flex lg:hidden items-center justify-center gap-1.5 w-fit capitalize text-sm font-medium h-8 px-3 transition rounded-3xl shadow-xl">
                     <span class="whitespace-nowrap">
                         {{ currencyFormat(subtotal, setting.site_digit_after_decimal_point, setting.site_default_currency_symbol, setting.site_currency_position) }}
                     </span>
