@@ -152,8 +152,14 @@ export default {
             this.searchItem = "";
         },
         toggleCart: function () {
-            this.cartOpen = !this.cartOpen;
-            this.$store.dispatch('tableCart/initTable', this.$route.params.slug);
+            if (this.cartOpen) {
+                // Close the cart
+                this.cartOpen = false;
+            } else {
+                // Open the cart and initialize table
+                this.cartOpen = true;
+                this.$store.dispatch('tableCart/initTable', this.$route.params.slug);
+            }
         },
     }
 }
