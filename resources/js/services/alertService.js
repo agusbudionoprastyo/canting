@@ -70,9 +70,9 @@ export default {
             position: position,
         });
     },
-    customAlert: function (message = "Custom Alert", position = "top-right", icon = '<i class="lab lab-bag-2 font-fill-primary"></i>') {
+    cartAlert: function (message = "Success", position = "top-right", icon = '<i class="lab lab-bag-2 font-fill-primary"></i>') {
         const toast = useToast();
-        toast.success(message, {
+        toast.succes(message, {
             position: position,
             icon: icon,
         });
