@@ -8,7 +8,7 @@
                     class="text-xl font-semibold capitalize text-center">
                     {{ $t('label.my_cart') }}
                 </h3>
-                <button class="fa-solid fa-xmark absolute top-2 right-5 text-white bg-[#F9EAEA)] xmark-btn"></button>
+                <button class="fa-solid fa-xmark absolute top-2 right-5 text-primary bg-[#F9EAEA] xmark-btn"></button>
 
                 <div v-if="carts.length === 0" class="flex items-center justify-center flex-col text-center flex-col text-center overflow-y-auto">
                     <img class="w-40 mb-12" :src="setting.image_cart" alt="gif">
