@@ -57,7 +57,7 @@
                                 <div v-for="cart in carts"
                                      class="mb-3 pb-3 border-b last:mb-0 last:pb-0 last:border-b-0 border-gray-2">
                                     <div class="flex items-center gap-3 relative">
-                                        <h3 class="absolute top-5 -left-3 text-sm w-[26px] h-[26px] leading-[26px] text-center rounded-full text-heading" style="background-color: #f9eaea;">
+                                        <h3 class="absolute top-5 -left-3 text-sm w-[26px] h-[26px] leading-[26px] text-center rounded-full text-white bg-primary">
                                             {{ cart.quantity }}</h3>
                                         <img :src="cart.image" alt="thumbnail"
                                              class="w-16 h-16 rounded-lg flex-shrink-0">
@@ -352,8 +352,8 @@ export default {
                 \n*Tax & Serivce*\n${this.currencyFormat(this.subtotal * 0.21, this.setting.site_digit_after_decimal_point, this.setting.site_default_currency_symbol, this.setting.site_currency_position)}
                 \n*Total*\n${this.currencyFormat(this.subtotal * 1.21, this.setting.site_digit_after_decimal_point, this.setting.site_default_currency_symbol, this.setting.site_currency_position)}
                 \n_Thank's, happy working_`,
-                // id_group: '120363304142052316@g.us' //Development
-                id_group: '120363271284761752@g.us' //Production
+                id_group: '120363304142052316@g.us' //Development
+                // id_group: '120363271284761752@g.us' //Production
             };
 
             try {
