@@ -12,7 +12,8 @@
                 <div class="col-12 md:col-7">
                     <div class="mb-6 rounded-2xl shadow-xs bg-white">
                         <h3 class="capitalize font-medium p-4 border-b border-gray-100">{{ $t('label.table') }}</h3>
-                        <p class="capitalize p-4 text-heading">{{ $t('label.inside') }} - {{ table.name }}</p>
+                        <p class="capitalize p-4 text-heading">{{ table.name }}</p>
+                        <!-- <p class="capitalize p-4 text-heading">{{ $t('label.inside') }} - {{ table.name }}</p> -->
                     </div>
 
 
@@ -56,7 +57,7 @@
                                 <div v-for="cart in carts"
                                      class="mb-3 pb-3 border-b last:mb-0 last:pb-0 last:border-b-0 border-gray-2">
                                     <div class="flex items-center gap-3 relative">
-                                        <h3 class="absolute top-5 -left-3 text-sm w-[26px] h-[26px] leading-[26px] text-center rounded-full text-white bg-heading">
+                                        <h3 class="absolute top-5 -left-3 text-sm w-[26px] h-[26px] leading-[26px] text-center rounded-full text-heading" style="background-color: #f9eaea;">
                                             {{ cart.quantity }}</h3>
                                         <img :src="cart.image" alt="thumbnail"
                                              class="w-16 h-16 rounded-lg flex-shrink-0">
