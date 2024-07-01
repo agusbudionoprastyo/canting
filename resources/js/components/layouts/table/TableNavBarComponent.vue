@@ -11,8 +11,8 @@
                 <!-- <button class="webcart flex lg:hidden items-center justify-center gap-1.5 w-fit rounded-3xl capitalize text-sm font-medium h-8 px-3 transition text-white bg-heading"> -->
                     <!-- <i class="fa-solid fa-bag-shopping text-sm"></i> -->
                 <!-- <button class="webcart flex lg:hidden items-center justify-center gap-1.5 w-fit capitalize text-sm font-medium h-8 px-3 transition text-primary"> -->
-                <button class="webcart flex lg:hidden items-center justify-center gap-1.5 w-fit capitalize text-sm font-medium h-8 px-3 transition text-primary">
-                    <i class="fa-solid fa-bag-shopping right-5 text-xl text-primary"></i>
+                <button class="webcart flex lg:hidden right-5 transition text-primary">
+                    <i class="fa-solid fa-bag-shopping text-xl text-primary"></i>
                     <span v-if="totalQuantity > 0" class="absolute right-3 text-xs w-[15px] h-[15px] leading-[15px] text-center rounded-full text-primary" style="background-color: #f9eaea;">
                         {{ totalQuantity }}
                     </span>
