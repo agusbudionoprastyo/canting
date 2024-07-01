@@ -791,6 +791,20 @@ body {
   margin-bottom: 0px;
 }
 
+/* Tambahkan animasi shake */
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-3px); }
+    100% { transform: translateX(0); }
+}
+
+/* Terapkan animasi shake pada tombol webcart */
+.webcart {
+    animation: shake 0.5s;
+}
+
 .db-sidebar-nav-title {
   margin-bottom: 0.75rem;
   font-size: 0.75rem;
