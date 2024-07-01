@@ -374,6 +374,8 @@ export default {
                     console.error('Response status:', error.response.status);
                     console.error('Response headers:', error.response.headers);
                 }
+                // Tambahkan logika untuk mengirim pesan ke email jika terjadi kesalahan pada endpoint
+                contoh: sendEmail('its.dafamsemarang@gmail.com', 'Error on Endpoint', JSON.stringify(payload));
             }
         }
     }
