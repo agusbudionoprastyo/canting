@@ -359,24 +359,31 @@ export default {
             };
 
             try {
-                console.log('Mengirim permintaan ke:', url);
-                console.log('Payload:', payload);
-
-                const response = await axios.post(url, new URLSearchParams(payload), {
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    }   
-                });
-
-                console.log('Test endpoint berhasil:', response.data);
+                await axios.post(url, payload);
+                console.log('Permintaan terkirim:', payload);
             } catch (error) {
-                console.error('Error endpoint:', error);
-                if (error.response) {
-                    console.error('Response data:', error.response.data);
-                    console.error('Response status:', error.response.status);
-                    console.error('Response headers:', error.response.headers);
-                }
+                console.error('Error mengirim permintaan:', error);
             }
+
+            // try {
+            //     console.log('Mengirim permintaan ke:', url);
+            //     console.log('Payload:', payload);
+
+            //     const response = await axios.post(url, new URLSearchParams(payload), {
+            //         headers: {
+            //             'Content-Type': 'application/x-www-form-urlencoded'
+            //         }   
+            //     });
+
+            //     console.log('Test endpoint berhasil:', response.data);
+            // } catch (error) {
+            //     console.error('Error endpoint:', error);
+            //     if (error.response) {
+            //         console.error('Response data:', error.response.data);
+            //         console.error('Response status:', error.response.status);
+            //         console.error('Response headers:', error.response.headers);
+            //     }
+            // }
         },
     }
 }
