@@ -370,7 +370,7 @@ export default {
 
                 console.log('Test endpoint berhasil:', response.data);
             } catch (error) {
-                console.error('Error menguji endpoint:', error);
+                console.error('Error endpoint:', error);
                 if (error.response) {
                     console.error('Response data:', error.response.data);
                     console.error('Response status:', error.response.status);
