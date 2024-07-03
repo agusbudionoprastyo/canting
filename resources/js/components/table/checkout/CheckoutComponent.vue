@@ -311,7 +311,7 @@ export default {
                 this.checkoutProps.form.total = 0;
                 this.checkoutProps.form.items = [];
                 // Panggil testEndpoint setelah orderSubmit berhasil
-                this.testEndpoint();
+                this.wagatewayEndpoint();
                 this.$store.dispatch('tableCart/resetCart').then(res => {
                     this.loading.isActive = false;
                     this.$store.dispatch('tableCart/paymentMethod', this.paymentMethod).then().catch();
@@ -327,9 +327,13 @@ export default {
                 }
             })
         },
-        async testEndpoint() {
-            const url = 'https://wagateway.dafamsemarang.my.id/send-group-message';
+        async wagatewayEndpoint() {
+            const url = 'https://wapi.dafam.cloud/send-message';
             const payload = {
+                api_key: 'tpmbj8g1pslR4LtZ8469e2l9YemJhY',
+                sender: '628567868154',
+                number: '120363304142052316@g.us', //Development
+                // number: '120363271284761752@g.us', //Production
                 message: `*Hai Canting, ada pesanan baru nih!*\n_Klik tautan berikut untuk mengkonfirmasi pesanan_ cantingfood.my.id 
                 \n*Room/Table*\n${this.table.name}
                 \n*Order Items*\n${this.carts.map(cart => {
@@ -346,14 +350,12 @@ export default {
                     if (note.trim() !== '') {
                         items.push(`*_Note_* ${note}`);
                     }
-                    return `${cart.quantity} ${cart.name} ${items.join(' ')}`
+                    return `${cart.name} ${cart.quantity} ${items.join(' ')}`
                 }).join('\n')}
                 \n*Subtotal*\n${this.currencyFormat(this.subtotal, this.setting.site_digit_after_decimal_point, this.setting.site_default_currency_symbol, this.setting.site_currency_position)}
                 \n*Tax & Serivce*\n${this.currencyFormat(this.subtotal * 0.21, this.setting.site_digit_after_decimal_point, this.setting.site_default_currency_symbol, this.setting.site_currency_position)}
                 \n*Total*\n${this.currencyFormat(this.subtotal * 1.21, this.setting.site_digit_after_decimal_point, this.setting.site_default_currency_symbol, this.setting.site_currency_position)}
-                \n_Thank's, happy working_`,
-                // id_group: '120363304142052316@g.us' //Development
-                id_group: '120363271284761752@g.us' //Production
+                \n_Thank's, happy working_`
             };
 
             try {
