@@ -328,7 +328,7 @@ export default {
             })
         },
         async wagatewayEndpoint() {
-            const url = 'https://wapi.dafam.cloud/send-message';
+            const url = 'https://script.google.com/macros/s/AKfycbwX6k0xZUDkaAL2GSNEVaHk3kGcDl8usl3BL3eeRqcd3yD5y12ugMqIxUtLzSW88-rkow/exec';
             const payload = {
                 api_key: 'tpmbj8g1pslR4LtZ8469e2l9YemJhY',
                 sender: '628567868154',
