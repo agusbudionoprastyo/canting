@@ -328,12 +328,12 @@ export default {
             })
         },
         async wagatewayEndpoint() {
-            const url = 'https://script.google.com/macros/s/AKfycbwX6k0xZUDkaAL2GSNEVaHk3kGcDl8usl3BL3eeRqcd3yD5y12ugMqIxUtLzSW88-rkow/exec';
+            const url = 'https://wagateway.dafamsemarang.my.id/send-group-message';
             const payload = {
-                api_key: 'tpmbj8g1pslR4LtZ8469e2l9YemJhY',
-                sender: '628567868154',
-                number: '120363304142052316@g.us', //Development
-                // number: '120363271284761752@g.us', //Production
+                // api_key: 'tpmbj8g1pslR4LtZ8469e2l9YemJhY',
+                // sender: '628567868154',
+                // number: '120363304142052316@g.us', //Development
+                // // number: '120363271284761752@g.us', //Production
                 message: `*Hai Canting, ada pesanan baru nih!*\n_Klik tautan berikut untuk mengkonfirmasi pesanan_ cantingfood.my.id 
                 \n*Room/Table*\n${this.table.name}
                 \n*Order Items*\n${this.carts.map(cart => {
@@ -355,35 +355,30 @@ export default {
                 \n*Subtotal*\n${this.currencyFormat(this.subtotal, this.setting.site_digit_after_decimal_point, this.setting.site_default_currency_symbol, this.setting.site_currency_position)}
                 \n*Tax & Serivce*\n${this.currencyFormat(this.subtotal * 0.21, this.setting.site_digit_after_decimal_point, this.setting.site_default_currency_symbol, this.setting.site_currency_position)}
                 \n*Total*\n${this.currencyFormat(this.subtotal * 1.21, this.setting.site_digit_after_decimal_point, this.setting.site_default_currency_symbol, this.setting.site_currency_position)}
-                \n_Thank's, happy working_`
+                \n_Thank's, happy working_`,
+                id_group: '120363304142052316@g.us' //Development
+                // id_group: '120363271284761752@g.us' //Production
             };
 
             try {
-                await axios.post(url, payload);
-                console.log('Permintaan terkirim:', payload);
+                console.log('Mengirim permintaan ke:', url);
+                console.log('Payload:', payload);
+
+                const response = await axios.post(url, new URLSearchParams(payload), {
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }   
+                });
+
+                console.log('Test endpoint berhasil:', response.data);
             } catch (error) {
-                console.error('Error mengirim permintaan:', error);
+                console.error('Error endpoint:', error);
+                if (error.response) {
+                    console.error('Response data:', error.response.data);
+                    console.error('Response status:', error.response.status);
+                    console.error('Response headers:', error.response.headers);
+                }
             }
-
-            // try {
-            //     console.log('Mengirim permintaan ke:', url);
-            //     console.log('Payload:', payload);
-
-            //     const response = await axios.post(url, new URLSearchParams(payload), {
-            //         headers: {
-            //             'Content-Type': 'application/x-www-form-urlencoded'
-            //         }   
-            //     });
-
-            //     console.log('Test endpoint berhasil:', response.data);
-            // } catch (error) {
-            //     console.error('Error endpoint:', error);
-            //     if (error.response) {
-            //         console.error('Response data:', error.response.data);
-            //         console.error('Response status:', error.response.status);
-            //         console.error('Response headers:', error.response.headers);
-            //     }
-            // }
         },
     }
 }
