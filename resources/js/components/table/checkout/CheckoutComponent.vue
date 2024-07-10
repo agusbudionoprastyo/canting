@@ -327,59 +327,104 @@ export default {
                 }
             })
         },
-        async wagatewayEndpoint() {
-            const url = 'https://wagateway.dafamsemarang.my.id/send-group-message';
-            const payload = {
-                // api_key: 'tpmbj8g1pslR4LtZ8469e2l9YemJhY',
-                // sender: '628567868154',
-                // number: '120363304142052316@g.us', //Development
-                // // number: '120363271284761752@g.us', //Production
-                message: `*Hai Canting, ada pesanan baru nih!*\n_Klik tautan berikut untuk mengkonfirmasi pesanan_ cantingfood.my.id 
-                \n*Room/Table*\n${this.table.name}
-                \n*Order Items*\n${this.carts.map(cart => {
-                    let variations = Object.values(cart.item_variations.names).join(', ');
-                    let extras = cart.item_extras.names.join(' ');
-                    let note = cart.instruction;
-                    let items = [];
-                    if (variations.trim() !== '') {
-                        items.push(`*_Include_* ${variations}`);
-                    }
-                    if (extras.trim() !== '') {
-                        items.push(`*_Extra_* ${extras}`);
-                    }
-                    if (note.trim() !== '') {
-                        items.push(`*_Note_* ${note}`);
-                    }
-                    return `${cart.name} ${cart.quantity} ${items.join(' ')}`
-                }).join('\n')}
-                \n*Subtotal*\n${this.currencyFormat(this.subtotal, this.setting.site_digit_after_decimal_point, this.setting.site_default_currency_symbol, this.setting.site_currency_position)}
-                \n*Tax & Serivce*\n${this.currencyFormat(this.subtotal * 0.21, this.setting.site_digit_after_decimal_point, this.setting.site_default_currency_symbol, this.setting.site_currency_position)}
-                \n*Total*\n${this.currencyFormat(this.subtotal * 1.21, this.setting.site_digit_after_decimal_point, this.setting.site_default_currency_symbol, this.setting.site_currency_position)}
-                \n_Thank's, happy working_`,
-                // id_group: '120363304142052316@g.us' //Development
-                id_group: '120363271284761752@g.us' //Production
-            };
+    //     async wagatewayEndpoint() {
+    //         const url = 'https://wagateway.dafamsemarang.my.id/send-group-message';
+    //         const payload = {
+    //             // api_key: 'tpmbj8g1pslR4LtZ8469e2l9YemJhY',
+    //             // sender: '628567868154',
+    //             // number: '120363304142052316@g.us', //Development
+    //             // // number: '120363271284761752@g.us', //Production
+    //             message: `*Hai Canting, ada pesanan baru nih!*\n_Klik tautan berikut untuk mengkonfirmasi pesanan_ cantingfood.my.id 
+    //             \n*Room/Table*\n${this.table.name}
+    //             \n*Order Items*\n${this.carts.map(cart => {
+    //                 let variations = Object.values(cart.item_variations.names).join(', ');
+    //                 let extras = cart.item_extras.names.join(' ');
+    //                 let note = cart.instruction;
+    //                 let items = [];
+    //                 if (variations.trim() !== '') {
+    //                     items.push(`*_Include_* ${variations}`);
+    //                 }
+    //                 if (extras.trim() !== '') {
+    //                     items.push(`*_Extra_* ${extras}`);
+    //                 }
+    //                 if (note.trim() !== '') {
+    //                     items.push(`*_Note_* ${note}`);
+    //                 }
+    //                 return `${cart.name} ${cart.quantity} ${items.join(' ')}`
+    //             }).join('\n')}
+    //             \n*Subtotal*\n${this.currencyFormat(this.subtotal, this.setting.site_digit_after_decimal_point, this.setting.site_default_currency_symbol, this.setting.site_currency_position)}
+    //             \n*Tax & Serivce*\n${this.currencyFormat(this.subtotal * 0.21, this.setting.site_digit_after_decimal_point, this.setting.site_default_currency_symbol, this.setting.site_currency_position)}
+    //             \n*Total*\n${this.currencyFormat(this.subtotal * 1.21, this.setting.site_digit_after_decimal_point, this.setting.site_default_currency_symbol, this.setting.site_currency_position)}
+    //             \n_Thank's, happy working_`,
+    //             // id_group: '120363304142052316@g.us' //Development
+    //             id_group: '120363271284761752@g.us' //Production
+    //         };
 
-            try {
-                console.log('Mengirim permintaan ke:', url);
-                console.log('Payload:', payload);
+    //         try {
+    //             console.log('Mengirim permintaan ke:', url);
+    //             console.log('Payload:', payload);
 
-                const response = await axios.post(url, new URLSearchParams(payload), {
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    }   
-                });
+    //             const response = await axios.post(url, new URLSearchParams(payload), {
+    //                 headers: {
+    //                     'Content-Type': 'application/x-www-form-urlencoded'
+    //                 }   
+    //             });
 
-                console.log('Endpoint berhasil:', response.data);
-            } catch (error) {
-                console.error('Error endpoint:', error);
-                if (error.response) {
-                    console.error('Response data:', error.response.data);
-                    console.error('Response status:', error.response.status);
-                    console.error('Response headers:', error.response.headers);
+    //             console.log('Endpoint berhasil:', response.data);
+    //         } catch (error) {
+    //             console.error('Error endpoint:', error);
+    //             if (error.response) {
+    //                 console.error('Response data:', error.response.data);
+    //                 console.error('Response status:', error.response.status);
+    //                 console.error('Response headers:', error.response.headers);
+    //             }
+    //         }
+    //     },
+    // }
+            async wagatewayEndpoint() {
+                const url = 'https://script.google.com/macros/s/AKfycbwM4j3HDsv6QVfIoUMpNKXHf2FW8-IRRMGdJm9Joz9fNvuCn2CATefEkCun8MZxf3j2/exec';  // Replace with your Google Apps Script Web App URL
+                const payload = {
+                    message: `*Hai Canting, ada pesanan baru nih!*\n_Klik tautan berikut untuk mengkonfirmasi pesanan_ cantingfood.my.id 
+                    \n*Room/Table*\n${this.table.name}
+                    \n*Order Items*\n${this.carts.map(cart => {
+                        let variations = Object.values(cart.item_variations.names).join(', ');
+                        let extras = cart.item_extras.names.join(' ');
+                        let note = cart.instruction;
+                        let items = [];
+                        if (variations.trim() !== '') {
+                            items.push(`*_Include_* ${variations}`);
+                        }
+                        if (extras.trim() !== '') {
+                            items.push(`*_Extra_* ${extras}`);
+                        }
+                        if (note.trim() !== '') {
+                            items.push(`*_Note_* ${note}`);
+                        }
+                        return `${cart.name} ${cart.quantity} ${items.join(' ')}`
+                    }).join('\n')}
+                    \n*Subtotal*\n${this.currencyFormat(this.subtotal, this.setting.site_digit_after_decimal_point, this.setting.site_default_currency_symbol, this.setting.site_currency_position)}
+                    \n*Tax & Serivce*\n${this.currencyFormat(this.subtotal * 0.21, this.setting.site_digit_after_decimal_point, this.setting.site_default_currency_symbol, this.setting.site_currency_position)}
+                    \n*Total*\n${this.currencyFormat(this.subtotal * 1.21, this.setting.site_digit_after_decimal_point, this.setting.site_default_currency_symbol, this.setting.site_currency_position)}
+                    \n_Thank's, happy working_`,
+                    // id_group: '120363271284761752@g.us' // Production ID Group (commented out or removed)
+                };
+
+                try {
+                    console.log('Mengirim permintaan ke:', url);
+                    console.log('Payload:', payload);
+
+                    const response = await axios.post(url, payload);
+
+                    console.log('Endpoint berhasil:', response.data);
+                } catch (error) {
+                    console.error('Error endpoint:', error);
+                    if (error.response) {
+                        console.error('Response data:', error.response.data);
+                        console.error('Response status:', error.response.status);
+                        console.error('Response headers:', error.response.headers);
+                    }
                 }
             }
-        },
-    }
+        }
 }
 </script>
