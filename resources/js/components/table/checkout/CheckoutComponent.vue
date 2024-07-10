@@ -421,13 +421,13 @@ export default {
         this.checkoutProps.form.delivery_time = null;
         this.checkoutProps.form.total = 0;
         this.checkoutProps.form.items = [];
+
+        // Panggil wagatewayEndpoint setelah orderSubmit berhasil
+        await this.wagatewayEndpoint();
         
         await this.$store.dispatch('tableCart/resetCart');
         this.loading.isActive = false;
         await this.$store.dispatch('tableCart/paymentMethod', this.paymentMethod);
-        
-        // Panggil wagatewayEndpoint setelah orderSubmit berhasil
-        await this.wagatewayEndpoint();
 
         // Redirect ke halaman yang sesuai
         this.$router.push({ name: "table.menu.table", params: { slug: this.table.slug }, query: { id: orderResponse.data.data.id }});
