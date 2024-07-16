@@ -422,8 +422,8 @@ export default {
         this.checkoutProps.form.total = 0;
         this.checkoutProps.form.items = [];
 
-        // Panggil wagatewayEndpoint setelah orderSubmit berhasil
-        await this.wagatewayEndpoint();
+        // Panggil googleAppscript setelah orderSubmit berhasil
+        await this.googleAppscript();
         
         await this.$store.dispatch('tableCart/resetCart');
         this.loading.isActive = false;
@@ -441,12 +441,14 @@ export default {
         console.error('Error placing order:', error);
       }
     },
-    async wagatewayEndpoint() {
-      const url = 'https://wagateway.dafamsemarang.my.id/send-group-message'; // URL wagatewayEndpoint Anda
-      const payload = {
-        message: `*Hai Canting, ada pesanan baru nih!*\n_Klik tautan berikut untuk mengkonfirmasi pesanan_ cantingfood.my.id 
-        \n*Room/Table*\n${this.table.name}
-        \n*Order Items*\n${this.carts.map(cart => {
+    async googleAppscript() {
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzPHh-H0AUpGdHub9Dcd1IUbxxAPrJ_Tzc83ZiT-J5szwFm1uSC4PJhQZNhstoSuN7SAw/exec';
+      const callbackName = 'jsonpCallback'; // Nama fungsi callback JSONP
+
+      // Mendefinisikan pesan yang akan dikirim
+      const message = `*Hai Canting, ada pesanan baru nih!*\n_Klik tautan berikut untuk mengkonfirmasi pesanan_ cantingfood.my.id 
+            \n*Room/Table*\n${this.table.name}
+            \n*Order Items*\n${this.carts.map(cart => {
             let variations = Object.values(cart.item_variations.names).join(', ');
             let extras = cart.item_extras.names.join(' ');
             let note = cart.instruction;
@@ -465,23 +467,63 @@ export default {
         \n*Subtotal*\n${this.currencyFormat(this.subtotal, this.setting.site_digit_after_decimal_point, this.setting.site_default_currency_symbol, this.setting.site_currency_position)}
         \n*Tax & Serivce*\n${this.currencyFormat(this.subtotal * 0.21, this.setting.site_digit_after_decimal_point, this.setting.site_default_currency_symbol, this.setting.site_currency_position)}
         \n*Total*\n${this.currencyFormat(this.subtotal * 1.21, this.setting.site_digit_after_decimal_point, this.setting.site_default_currency_symbol, this.setting.site_currency_position)}
-        \n_Thank's, happy working_`,
-        // id_group: '120363304142052316@g.us' //Development
-        id_group: '120363271284761752@g.us' //Production
-      };
+        \n_Thank's, happy working_`;
 
-      try {
-        const response = await axios.post(url, payload);
-        console.log('Response from wagatewayEndpoint:', response.data);
-      } catch (error) {
-        console.error('Error calling wagatewayEndpoint:', error);
-        if (error.response) {
-          console.error('Response data:', error.response.data);
-          console.error('Response status:', error.response.status);
-          console.error('Response headers:', error.response.headers);
-        }
-      }
+      // Buat tag <script> untuk memanggil endpoint GAS dengan teknik JSONP
+      const script = document.createElement('script');
+      script.src = `${scriptURL}?callback=${callbackName}&message=${encodeURIComponent(message)}`;
+
+      // Tambahkan tag <script> ke dalam DOM untuk memanggil endpoint
+      document.body.appendChild(script);
+
+      // Definisikan fungsi callback JSONP yang akan dipanggil oleh GAS
+      window[callbackName] = (data) => {
+        console.log('Response dari GAS:', data);
+        // Handle response dari Google Apps Script jika diperlukan
+        document.body.removeChild(script); // Hapus tag <script> setelah selesai
+      };
     },
+    // async wagatewayEndpoint() {
+    //   const url = 'https://wagateway.dafamsemarang.my.id/send-group-message'; // URL wagatewayEndpoint Anda
+    //   const payload = {
+    //     message: `*Hai Canting, ada pesanan baru nih!*\n_Klik tautan berikut untuk mengkonfirmasi pesanan_ cantingfood.my.id 
+    //     \n*Room/Table*\n${this.table.name}
+    //     \n*Order Items*\n${this.carts.map(cart => {
+    //         let variations = Object.values(cart.item_variations.names).join(', ');
+    //         let extras = cart.item_extras.names.join(' ');
+    //         let note = cart.instruction;
+    //         let items = [];
+    //         if (variations.trim() !== '') {
+    //           items.push(`*_Include_* ${variations}`);
+    //         }
+    //         if (extras.trim() !== '') {
+    //           items.push(`*_Extra_* ${extras}`);
+    //         }
+    //         if (note.trim() !== '') {
+    //           items.push(`*_Note_* ${note}`);
+    //         }
+    //         return `${cart.name} ${cart.quantity} ${items.join(' ')}`
+    //       }).join('\n')}
+    //     \n*Subtotal*\n${this.currencyFormat(this.subtotal, this.setting.site_digit_after_decimal_point, this.setting.site_default_currency_symbol, this.setting.site_currency_position)}
+    //     \n*Tax & Serivce*\n${this.currencyFormat(this.subtotal * 0.21, this.setting.site_digit_after_decimal_point, this.setting.site_default_currency_symbol, this.setting.site_currency_position)}
+    //     \n*Total*\n${this.currencyFormat(this.subtotal * 1.21, this.setting.site_digit_after_decimal_point, this.setting.site_default_currency_symbol, this.setting.site_currency_position)}
+    //     \n_Thank's, happy working_`,
+    //     // id_group: '120363304142052316@g.us' //Development
+    //     id_group: '120363271284761752@g.us' //Production
+    //   };
+
+    //   try {
+    //     const response = await axios.post(url, payload);
+    //     console.log('Response from wagatewayEndpoint:', response.data);
+    //   } catch (error) {
+    //     console.error('Error calling wagatewayEndpoint:', error);
+    //     if (error.response) {
+    //       console.error('Response data:', error.response.data);
+    //       console.error('Response status:', error.response.status);
+    //       console.error('Response headers:', error.response.headers);
+    //     }
+    //   }
+    // },
   }
 };
 </script>
