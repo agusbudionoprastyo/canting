@@ -454,7 +454,7 @@ export default {
             let note = cart.instruction;
             let items = [];
             if (variations.trim() !== '') {
-              items.push(`*_Include_* ${variations}`);
+              items.push(`*_Varian_* ${variations}`);
             }
             if (extras.trim() !== '') {
               items.push(`*_Extra_* ${extras}`);
