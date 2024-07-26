@@ -272,16 +272,12 @@
                 </button> -->
 
                 <button type="button" 
+                    :class="buttonClass" 
                     :disabled="isOrderDisabled || temp.total_price <= 0" 
-                    @click.prevent="addToCart"
-                    class="flex items-center justify-center gap-3 rounded-3xl text-base py-3 px-3 font-medium w-full text-white bg-primary">
+                    @click.prevent="addToCart">
                     <i class="icon-bag-2"></i>
                     <span>
-                        {{ $t('button.add_to_cart') }} -
-                        {{
-                            currencyFormat(temp.total_price, setting.site_digit_after_decimal_point,
-                                setting.site_default_currency_symbol, setting.site_currency_position)
-                        }}
+                        {{ buttonText }}
                     </span>
                 </button>
 
@@ -423,9 +419,18 @@ export default {
         isOrderDisabled() {
             const now = new Date();
             const currentHour = now.getHours();
-            
-            // Memeriksa apakah waktu saat ini berada dalam rentang jam 11 malam hingga jam 7 pagi
+            // Mengembalikan true jika saat ini antara jam 11 malam dan jam 7 pagi
             return currentHour >= 23 || currentHour < 7;
+        },
+        buttonClass() {
+            // Mengembalikan kelas tombol sesuai dengan status aktif atau dinonaktifkan
+            return this.isOrderDisabled ? 'flex items-center justify-center gap-3 rounded-3xl text-base py-3 px-3 font-medium w-full text-white bg-gray-600' : 'flex items-center justify-center gap-3 rounded-3xl text-base py-3 px-3 font-medium w-full text-white bg-primary';
+        },
+        buttonText() {
+            // Mengembalikan teks tombol sesuai dengan status aktif atau dinonaktifkan
+            return this.isOrderDisabled ? 'Available on 07:00 - 23:00' : 
+                `Add to Cart - ${this.currencyFormat(this.temp.total_price, this.setting.site_digit_after_decimal_point,
+                    this.setting.site_default_currency_symbol, this.setting.site_currency_position)}`;
         }
     },
     methods: {
