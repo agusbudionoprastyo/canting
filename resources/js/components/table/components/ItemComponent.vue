@@ -258,7 +258,22 @@
                     <textarea v-model="temp.instruction" :placeholder="$t('message.add_note')"
                         class="h-12 w-full rounded-lg border py-1.5 px-2 placeholder:text-[10px] placeholder:text-[#6E7191] border-[#D9DBE9]"></textarea>
                 </div>
-                <button type="button" :disabled="temp.total_price <= 0" @click.prevent="addToCart"
+
+                <!-- <button type="button" :disabled="temp.total_price <= 0" @click.prevent="addToCart"
+                    class="flex items-center justify-center gap-3 rounded-3xl text-base py-3 px-3 font-medium w-full text-white bg-primary">
+                    <i class="icon-bag-2"></i>
+                    <span>
+                        {{ $t('button.add_to_cart') }} -
+                        {{
+                            currencyFormat(temp.total_price, setting.site_digit_after_decimal_point,
+                                setting.site_default_currency_symbol, setting.site_currency_position)
+                        }}
+                    </span>
+                </button> -->
+
+                <button type="button" 
+                    :disabled="isOrderDisabled || temp.total_price <= 0" 
+                    @click.prevent="addToCart"
                     class="flex items-center justify-center gap-3 rounded-3xl text-base py-3 px-3 font-medium w-full text-white bg-primary">
                     <i class="icon-bag-2"></i>
                     <span>
@@ -269,6 +284,7 @@
                         }}
                     </span>
                 </button>
+
             </div>
         </div>
     </div>
@@ -404,6 +420,13 @@ export default {
         setting: function () {
             return this.$store.getters['frontendSetting/lists'];
         },
+        isOrderDisabled() {
+            const now = new Date();
+            const currentHour = now.getHours();
+            
+            // Memeriksa apakah waktu saat ini berada dalam rentang jam 11 malam hingga jam 7 pagi
+            return currentHour >= 23 || currentHour < 7;
+        }
     },
     methods: {
         onlyNumber: function (e) {
