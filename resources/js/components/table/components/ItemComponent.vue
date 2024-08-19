@@ -420,7 +420,7 @@ export default {
             const now = new Date();
             const currentHour = now.getHours();
             // Mengembalikan true jika saat ini antara jam 11 malam dan jam 7 pagi
-            return currentHour >= 23 || currentHour < 7;
+            return currentHour >= 22 || currentHour < 7;
         },
         buttonClass() {
             // Mengembalikan kelas tombol sesuai dengan status aktif atau dinonaktifkan
@@ -428,7 +428,7 @@ export default {
         },
         buttonText() {
             // Mengembalikan teks tombol sesuai dengan status aktif atau dinonaktifkan
-            return this.isOrderDisabled ? 'Available on 07:00 - 23:00' : 
+            return this.isOrderDisabled ? 'Available on 07:00 - 22:00' : 
                 `Add to Cart - ${this.currencyFormat(this.temp.total_price, this.setting.site_digit_after_decimal_point,
                     this.setting.site_default_currency_symbol, this.setting.site_currency_position)}`;
         }
