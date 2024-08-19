@@ -428,7 +428,7 @@ export default {
         },
         buttonText() {
             // Mengembalikan teks tombol sesuai dengan status aktif atau dinonaktifkan
-            return this.isOrderDisabled ? 'Available on 07:00 - 22:00' : 
+            return this.isOrderDisabled ? 'Available on 07:00 - 23:00' : 
                 `Add to Cart - ${this.currencyFormat(this.temp.total_price, this.setting.site_digit_after_decimal_point,
                     this.setting.site_default_currency_symbol, this.setting.site_currency_position)}`;
         }
